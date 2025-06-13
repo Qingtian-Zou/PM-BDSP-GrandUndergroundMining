@@ -1,0 +1,149 @@
+{
+    "Sphere S":{
+        "size":4,
+        "shape":[[1,1],
+                 [1,1]],
+        "color":"white",
+        "value":4
+    },
+    "Sphere L":{
+        "size":9,
+        "shape":[[1,0,0],
+                 [1,0,0],
+                 [1,1,1]],
+        "color":"white",
+        "value":7
+    },
+    "Statue":{
+        "size":9,
+        "shape":[[1,1,1],
+                 [1,1,1],
+                 [1,1,1]],
+        "color":"blue",
+        "value":10
+    },
+    "Shiny Statue":{
+        "size":9,
+        "shape":[[1,1,1],
+                 [1,1,1],
+                 [1,1,1]],
+        "color":"yellow",
+        "value":15
+    },
+    "Red Shard":{
+        "size":8,
+        "shape":[[1,1,1],
+                 [1,1,0],
+                 [1,1,1]],
+        "color":"red",
+        "value":11
+    },
+    "Blue Shard":{
+        "size":8,
+        "shape":[[1,1,1],
+                 [1,1,1],
+                 [1,1,0]],
+        "color":"blue",
+        "value":11
+    },
+    "Green Shard":{
+        "size":11,
+        "shape":[[1,1,1,1],
+                 [1,1,1,1],
+                 [1,1,0,1]],
+        "color":"green",
+        "value":16
+    },
+    "Yellow Shard":{
+        "size":9,
+        "shape":[[1,0,1,0],
+                 [1,1,1,0],
+                 [1,1,1,1]],
+        "color":"yellow",
+        "value":14
+    },
+    "Helix Fossil":{
+        "size":7,
+        "shape":[[0,1,1],
+                 [1,1,1],
+                 [1,1,0]],
+        "color":"brown",
+        "value":18
+    },
+    "Dome Fossil":{
+        "size":10,
+        "shape":[[1,1,1,1],
+                 [1,1,1,1],
+                 [0,1,1,0]],
+        "color":"brown",
+        "value":18
+    },
+    "Old Amber":{
+        "size":7,
+        "shape":[[0,1,1],
+                 [1,1,1],
+                 [1,1,0]],
+        "color":"amber",
+        "value":9
+    },
+    "Root Fossil":{
+        "size":6,
+        "shape":[[0,0,1,1],
+                 [1,0,0,1],
+                 [0,1,1,0]],
+        "color":"green",
+        "value":17
+    },
+    "Claw Fossil":{
+        "size":6,
+        "shape":[[1,1,0,0],
+                 [0,1,1,0],
+                 [0,0,1,1]],
+        "color":"grey",
+        "value":14
+    },
+    "Armor Fossil":{
+        "size":14,
+        "shape":[[0,1,1,1],
+                [1,1,1,1],
+                [1,1,1,1],
+                [1,1,1,0]],
+        "color":"grey",
+        "value":20
+    },
+    "Skull Fossil":{
+        "size":10,
+        "shape":[[1,1,1,1],
+                 [1,1,1,1],
+                 [0,1,1,0]],
+        "color":"grey",
+        "value":15
+    },
+    "Rare Bone":{
+        "size":10,
+        "shape":[[1,1,1],
+                 [0,1,0],
+                 [0,1,0],
+                 [0,1,0],
+                 [0,1,0],
+                 [1,1,1]],
+        "color":"white",
+        "value":12
+    },
+    "Star Piece":{
+        "size":5,
+        "shape":[[0,1,0],
+                [1,1,1],
+                [0,1,0]],
+        "color":"yellow",
+        "value":15
+    },
+    "Revive":{
+        "size":5,
+        "shape":[[0,1,0],
+                [1,1,1],
+                [0,1,0]],
+        "color":"green",
+        "value":10
+    }
+}
