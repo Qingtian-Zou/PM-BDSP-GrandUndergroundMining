@@ -1,4 +1,6 @@
 .history
+checkpoints/
+hyperparam_search/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
