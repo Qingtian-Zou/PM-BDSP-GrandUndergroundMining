@@ -1,4 +1,4 @@
-# PM-BDSP-GrandUnderground-mining
+# PM-BDSP-GrandUndergroundMining
 
 A reinforcement learning environment and agent framework for simulating the mining minigame from Pokémon Brilliant Diamond & Shining Pearl's Grand Underground. This project provides a customizable Gymnasium-compatible environment, reward definitions, and deep RL agent examples for research and experimentation.
 
