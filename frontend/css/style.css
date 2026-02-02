@@ -1122,3 +1122,45 @@ body {
     margin-bottom: var(--gap-lg);
     color: var(--text-primary);
 }
+
+/* ===========================================
+   Notice Banner
+   =========================================== */
+
+.notice-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-md);
+    padding: var(--gap-md) var(--gap-lg);
+    margin-bottom: var(--gap-xl);
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-gold);
+}
+
+.notice-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.notice-banner p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.notice-banner strong {
+    color: var(--accent-gold);
+}
+
+.notice-banner a {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+}
+
+.notice-banner a:hover {
+    color: var(--accent-primary);
+}
