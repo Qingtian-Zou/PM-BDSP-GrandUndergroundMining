@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Underground Mining</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="game-header">
+            <div class="logo">
+                <span class="icon">⛏️</span>
+                <h1>Grand Underground Mining</h1>
+            </div>
+            <div class="header-controls">
+                <button id="new-game-btn" class="btn btn-primary">New Game</button>
+            </div>
+        </header>
+
+        <!-- Mode Selection Screen -->
+        <div id="mode-selection" class="screen active">
+            <div class="mode-container">
+                <h2>Select Game Mode</h2>
+                <div class="mode-cards">
+                    <div class="mode-card" data-mode="normal">
+                        <div class="mode-icon">🎮</div>
+                        <h3>Normal Mode</h3>
+                        <p>Play at your own pace with optional AI hints to guide you.</p>
+                        <ul class="mode-features">
+                            <li>✓ Manual gameplay</li>
+                            <li>✓ AI hint button</li>
+                            <li>✓ Score tracking</li>
+                        </ul>
+                        <button class="btn btn-mode">Start Normal</button>
+                    </div>
+                    <div class="mode-card" data-mode="compete">
+                        <div class="mode-icon">🤖</div>
+                        <h3>Compete Mode</h3>
+                        <p>Challenge the AI agent side-by-side with the same board!</p>
+                        <ul class="mode-features">
+                            <li>✓ Same starting board</li>
+                            <li>✓ Turn-based competition</li>
+                            <li>✓ Compare strategies</li>
+                        </ul>
+                        <button class="btn btn-mode">Start Compete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Normal Mode Game Screen -->
+        <div id="normal-game" class="screen">
+            <div class="game-layout single">
+                <div class="game-panel main-panel">
+                    <div class="panel-header">
+                        <h2>Your Mining Session</h2>
+                        <div class="stats-bar">
+                            <div class="stat">
+                                <span class="stat-label">Score</span>
+                                <span class="stat-value" id="normal-score">0</span>
+                            </div>
+                            <div class="stat energy-stat">
+                                <span class="stat-label">Energy</span>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" id="normal-energy-fill"></div>
+                                    <span class="energy-text" id="normal-energy-text">95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="board-container">
+                        <div id="normal-board" class="mining-board"></div>
+                        <div id="normal-hint-overlay" class="hint-overlay"></div>
+                    </div>
+                    
+                    <div class="controls-bar">
+                        <div class="tool-selector">
+                            <button class="tool-btn active" data-tool="0" id="brush-btn">
+                                <span class="tool-icon">🖌️</span>
+                                <span class="tool-name">Brush</span>
+                                <span class="tool-cost">-2 ⚡</span>
+                            </button>
+                            <button class="tool-btn" data-tool="1" id="blower-btn">
+                                <span class="tool-icon">💨</span>
+                                <span class="tool-name">Blower</span>
+                                <span class="tool-cost">-4 ⚡</span>
+                            </button>
+                        </div>
+                        <button class="btn btn-hint" id="hint-btn">
+                            <span class="btn-icon">🤖</span>
+                            <span>Get AI Hint</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="side-panel">
+                    <h3>Items to Find</h3>
+                    <div id="normal-items-list" class="items-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compete Mode Game Screen -->
+        <div id="compete-game" class="screen">
+            <div class="game-layout dual">
+                <!-- Player Panel -->
+                <div class="game-panel player-panel">
+                    <div class="panel-header">
+                        <h2>👤 Your Board</h2>
+                        <div class="stats-bar">
+                            <div class="stat">
+                                <span class="stat-label">Score</span>
+                                <span class="stat-value" id="player-score">0</span>
+                            </div>
+                            <div class="stat energy-stat">
+                                <span class="stat-label">Energy</span>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" id="player-energy-fill"></div>
+                                    <span class="energy-text" id="player-energy-text">95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="board-container">
+                        <div id="player-board" class="mining-board"></div>
+                        <div id="player-hint-overlay" class="hint-overlay"></div>
+                    </div>
+                    
+                    <div class="controls-bar">
+                        <div class="tool-selector">
+                            <button class="tool-btn active" data-tool="0" id="compete-brush-btn">
+                                <span class="tool-icon">🖌️</span>
+                                <span class="tool-name">Brush</span>
+                                <span class="tool-cost">-2 ⚡</span>
+                            </button>
+                            <button class="tool-btn" data-tool="1" id="compete-blower-btn">
+                                <span class="tool-icon">💨</span>
+                                <span class="tool-name">Blower</span>
+                                <span class="tool-cost">-4 ⚡</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Panel -->
+                <div class="game-panel ai-panel">
+                    <div class="panel-header">
+                        <h2>🤖 AI Board</h2>
+                        <div class="stats-bar">
+                            <div class="stat">
+                                <span class="stat-label">Score</span>
+                                <span class="stat-value" id="ai-score">0</span>
+                            </div>
+                            <div class="stat energy-stat">
+                                <span class="stat-label">Energy</span>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" id="ai-energy-fill"></div>
+                                    <span class="energy-text" id="ai-energy-text">95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="board-container">
+                        <div id="ai-board" class="mining-board"></div>
+                        <div id="ai-action-overlay" class="action-overlay"></div>
+                    </div>
+                    
+                    <div class="controls-bar ai-controls">
+                        <div class="ai-status" id="ai-status">
+                            <span class="status-icon">⏳</span>
+                            <span class="status-text">Waiting for your move...</span>
+                        </div>
+                        <button class="btn btn-danger" id="fast-forward-btn">
+                            <span class="btn-icon">⏩</span>
+                            <span>Let AI Finish</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="compete-items-panel">
+                <h3>Items to Find</h3>
+                <div id="compete-items-list" class="items-list horizontal"></div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Game Over!</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="single-result" class="result-single">
+                        <div class="final-score">
+                            <span class="score-label">Final Score</span>
+                            <span class="score-value" id="final-score">0</span>
+                        </div>
+                        <div class="items-retrieved">
+                            <span id="items-retrieved">0</span> / <span id="items-total">0</span> items retrieved
+                        </div>
+                    </div>
+                    <div id="compete-result" class="result-compete hidden">
+                        <div class="compete-scores">
+                            <div class="compete-score player-result">
+                                <span class="result-label">👤 You</span>
+                                <span class="result-value" id="compete-player-score">0</span>
+                            </div>
+                            <div class="vs">VS</div>
+                            <div class="compete-score ai-result">
+                                <span class="result-label">🤖 AI</span>
+                                <span class="result-value" id="compete-ai-score">0</span>
+                            </div>
+                        </div>
+                        <div class="winner-announcement" id="winner-text">
+                            You Win!
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="play-again-btn">Play Again</button>
+                    <button class="btn btn-secondary" id="change-mode-btn">Change Mode</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fast Forward Warning Modal -->
+        <div id="fast-forward-modal" class="modal">
+            <div class="modal-content warning">
+                <div class="modal-header">
+                    <h2>⚠️ Give Up?</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Letting the AI finish means <strong>you're giving up</strong> on this match!</p>
+                    <p>The AI will complete its game instantly, but your board will remain as is.</p>
+                    <p class="warning-text">Are you sure you want to forfeit?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancel-ff-btn">Keep Playing</button>
+                    <button class="btn btn-danger" id="confirm-ff-btn">Yes, Let AI Finish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/game.js"></script>
+    <script src="/js/ai-assist.js"></script>
+</body>
+</html>
