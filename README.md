@@ -222,12 +222,31 @@ From hyperparameter search with **2187 configurations** tested:
 ## 📁 Project Structure
 
 ```
-├── game/                  # Game environment module
+├── frontend/              # Static frontend (GitHub Pages)
+│   ├── index.html         # Main game page
+│   ├── css/style.css      # Game styles
+│   ├── js/
+│   │   ├── config.js      # API URL configuration
+│   │   ├── game.js        # Main game logic
+│   │   └── ai-assist.js   # AI hint functionality
+│   └── README.md          # Frontend deployment guide
+│
+├── backend/               # Flask API (Railway)
+│   ├── server.py          # REST API server
+│   ├── game/              # Game environment module
+│   ├── agents/            # RL agent implementations
+│   ├── checkpoints/       # Trained model weights
+│   ├── requirements.txt   # Python dependencies
+│   ├── Procfile           # Railway/Heroku deployment
+│   ├── railway.toml       # Railway configuration
+│   └── README.md          # Backend deployment guide
+│
+├── game/                  # Game environment module (development)
 │   ├── __init__.py
 │   ├── mining_env.py      # Gymnasium environment
 │   └── minable.json       # Reward definitions
 │
-├── agents/                # RL agent implementations
+├── agents/                # RL agent implementations (development)
 │   ├── __init__.py
 │   ├── dqn_agent.py       # Dueling Double DQN + PER
 │   ├── ppo_agent.py       # PPO with GAE
@@ -242,12 +261,22 @@ From hyperparameter search with **2187 configurations** tested:
 │   ├── train_smart.py     # Smart agent training
 │   └── hyperparam_search.py # Grid search framework
 │
-├── static/                # Web UI assets
-├── server.py              # Flask web server
+├── static/                # Legacy web UI (for local development)
+├── server.py              # Legacy Flask server (local)
 ├── game.ipynb             # Interactive notebook demo
 ├── hyperparam_search/     # Search results
 └── checkpoints/           # Saved models
 ```
+
+## 🌐 Deployment
+
+### GitHub Pages (Frontend)
+The static frontend is deployed to GitHub Pages for hosting the game UI.
+
+### Railway (Backend)
+The Flask API is deployed to Railway for running the AI agent and game logic.
+
+See `frontend/README.md` and `backend/README.md` for detailed deployment instructions.
 
 ---
 

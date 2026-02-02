@@ -1,0 +1,8 @@
+# Grand Underground Mining Game - Backend API
+# Python dependencies for Railway deployment
+
+flask>=2.3.0
+flask-cors>=4.0.0
+torch>=2.0.0
+numpy>=1.24.0
+gunicorn>=21.0.0
