@@ -27,7 +27,7 @@ games = {}
 compete_sessions = {}
 
 # Configuration
-CHECKPOINT_PATH = Path(__file__).parent / "checkpoints" / "smart_20260130_192932" / "best_model.pt"
+CHECKPOINT_PATH = Path(__file__).parent / "checkpoints" / "smart_20260201_175126" / "best_model.pt"
 BOARD_SHAPE = (10, 13)
 MAX_ENERGY = 95
 
