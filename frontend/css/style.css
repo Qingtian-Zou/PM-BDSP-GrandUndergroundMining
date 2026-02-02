@@ -1025,4 +1025,100 @@ body {
         width: 100%;
         max-width: none;
     }
+
+    .project-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-thumbnail {
+        width: 120px;
+        height: 120px;
+    }
+
+    .github-link {
+        justify-content: center;
+    }
+}
+
+/* ===========================================
+   Project Hero Section
+   =========================================== */
+
+.project-hero {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xl);
+    padding: var(--gap-xl);
+    margin-bottom: var(--gap-xl);
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.1));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-thumbnail {
+    width: 150px;
+    height: 150px;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--gap-md);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--gap-lg);
+    font-size: 1rem;
+}
+
+.hero-description strong {
+    color: var(--accent-secondary);
+    font-weight: 600;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding: 0.75rem 1.25rem;
+    background: #24292e;
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.github-link:hover {
+    background: #374151;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.github-icon {
+    flex-shrink: 0;
+}
+
+.mode-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--gap-lg);
+    color: var(--text-primary);
 }
