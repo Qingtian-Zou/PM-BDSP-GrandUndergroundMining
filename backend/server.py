@@ -77,47 +77,39 @@ def get_agent():
     """Lazy load the AI agent."""
     global ai_agent
     if ai_agent is None:
-        # Default config that matches the checkpoint
-        conv_channels = 64
-        n_conv_layers = 3
-        fc_hidden_size = 128
-        
-        ai_agent = SmartAgent(
-            board_shape=BOARD_SHAPE,
-            n_retrieved=4,
-            conv_channels=conv_channels,
-            n_conv_layers=n_conv_layers,
-            fc_hidden_size=fc_hidden_size,
-        )
-        
         if CHECKPOINT_PATH.exists():
+            # Load checkpoint first to read the config
             checkpoint = torch.load(str(CHECKPOINT_PATH), map_location='cpu', weights_only=False)
             
-            # Try direct load first
-            try:
-                ai_agent.policy.load_state_dict(checkpoint["policy"])
-                ai_agent.value.load_state_dict(checkpoint["value"])
-                print(f"Loaded AI model from {CHECKPOINT_PATH}")
-            except RuntimeError as e:
-                print(f"Direct load failed, trying key remapping: {e}")
-                
-                # Remap policy keys
-                policy_remapped = remap_state_dict(
-                    checkpoint["policy"],
-                    list(ai_agent.policy.state_dict().keys())
-                )
-                ai_agent.policy.load_state_dict(policy_remapped, strict=False)
-                
-                # Remap value keys  
-                value_remapped = remap_state_dict(
-                    checkpoint["value"],
-                    list(ai_agent.value.state_dict().keys())
-                )
-                ai_agent.value.load_state_dict(value_remapped, strict=False)
-                
-                print(f"Loaded AI model with key remapping from {CHECKPOINT_PATH}")
+            # Get config from checkpoint, with fallback defaults
+            config = checkpoint.get('config', {})
+            conv_channels = config.get('conv_channels', 128)
+            n_conv_layers = config.get('n_conv_layers', 4)
+            fc_hidden_size = config.get('fc_hidden_size', 64)
+            
+            print(f"Loading model with config: conv_channels={conv_channels}, n_conv_layers={n_conv_layers}, fc_hidden_size={fc_hidden_size}")
+            
+            ai_agent = SmartAgent(
+                board_shape=BOARD_SHAPE,
+                n_retrieved=4,
+                conv_channels=conv_channels,
+                n_conv_layers=n_conv_layers,
+                fc_hidden_size=fc_hidden_size,
+            )
+            
+            # Load weights
+            ai_agent.policy.load_state_dict(checkpoint["policy"])
+            ai_agent.value.load_state_dict(checkpoint["value"])
+            print(f"Loaded AI model from {CHECKPOINT_PATH}")
         else:
-            print(f"Warning: No checkpoint found at {CHECKPOINT_PATH}, using untrained agent")
+            print(f"Warning: No checkpoint found at {CHECKPOINT_PATH}, using untrained agent with default config")
+            ai_agent = SmartAgent(
+                board_shape=BOARD_SHAPE,
+                n_retrieved=4,
+                conv_channels=128,
+                n_conv_layers=4,
+                fc_hidden_size=64,
+            )
     return ai_agent
 
 
