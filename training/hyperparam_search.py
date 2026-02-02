@@ -24,8 +24,13 @@ from multiprocessing import Pool, cpu_count
 from typing import Dict, List, Tuple, Any
 import numpy as np
 
-import mining_env
-from smart_agent import SmartAgent, evaluate_agent
+import sys
+from pathlib import Path
+# Add parent dir to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from game import MiningEnv
+from agents.smart_agent import SmartAgent, evaluate_agent
 import torch
 
 
@@ -56,7 +61,7 @@ def train_single_config(args: Tuple[int, Dict[str, Any], int, int]) -> Dict[str,
     config_id, params, n_episodes, eval_episodes = args
     
     # Set up environment
-    env = mining_env.MiningEnv(
+    env = MiningEnv(
         board_shape=(10, 13),
         max_energy=95,
         minor_rewards=params["minor_rewards"]
@@ -443,7 +448,7 @@ def main():
         f.write("# Best hyperparameter configuration\n")
         f.write(f"# Model size: {best['n_params']/1000:.1f}K parameters\n")
         f.write(f"# Eval reward: {best['eval_mean_reward']:.2f}\n\n")
-        f.write(f"python train_smart.py \\\n")
+        f.write(f\"python training/train_smart.py \\\\\\n\")
         f.write(f"  --lr {params['lr']} \\\n")
         f.write(f"  --gamma {params['gamma']} \\\n")
         f.write(f"  --entropy-coef {params['entropy_coef']} \\\n")

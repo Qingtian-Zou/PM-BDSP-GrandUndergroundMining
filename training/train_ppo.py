@@ -17,8 +17,13 @@ from typing import List, Tuple
 import numpy as np
 import matplotlib.pyplot as plt
 
-import mining_env
-from ppo_agent import PPOAgent, evaluate_agent
+import sys
+from pathlib import Path
+# Add parent dir to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from game import MiningEnv
+from agents.ppo_agent import PPOAgent, evaluate_agent
 
 
 def parse_args():
@@ -198,7 +203,7 @@ def main():
     print(f"Entropy Coef: {args.entropy_coef}")
     print("=" * 60)
     
-    env = mining_env.MiningEnv(
+    env = MiningEnv(
         board_shape=(args.board_height, args.board_width),
         max_energy=args.max_energy,
         minor_rewards=args.minor_rewards

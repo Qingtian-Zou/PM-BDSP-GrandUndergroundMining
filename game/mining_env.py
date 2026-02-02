@@ -8,10 +8,13 @@ from pathlib import Path
 class MiningEnv(gym.Env):
     metadata = {"render_modes": ["human"]}
 
-    def __init__(self, board_shape=(10, 10), max_energy=100, minable_path="minable.json", minor_rewards=0.0):
+    def __init__(self, board_shape=(10, 10), max_energy=100, minable_path=None, minor_rewards=0.0):
         super().__init__()
         self.board_shape = board_shape
         self.max_energy = max_energy
+        # Default to minable.json in the same directory as this module
+        if minable_path is None:
+            minable_path = Path(__file__).parent / "minable.json"
         self.minable_path = minable_path
         self.minor_rewards = minor_rewards # give minor rewards for partial reward block revealing
         self.action_space = spaces.MultiDiscrete([board_shape[0], board_shape[1], 2])  # (x, y, tool)

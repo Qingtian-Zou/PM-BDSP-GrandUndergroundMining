@@ -18,8 +18,13 @@ from typing import List, Tuple
 import numpy as np
 import matplotlib.pyplot as plt
 
-import mining_env
-from dqn_agent import DQNAgent, evaluate_agent
+import sys
+from pathlib import Path
+# Add parent dir to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from game import MiningEnv
+from agents.dqn_agent import DQNAgent, evaluate_agent
 
 
 def parse_args():
@@ -275,7 +280,7 @@ def main():
     print("=" * 60)
     
     # Create environment
-    env = mining_env.MiningEnv(
+    env = MiningEnv(
         board_shape=(args.board_height, args.board_width),
         max_energy=args.max_energy,
         minor_rewards=args.minor_rewards
