@@ -1,6 +1,6 @@
 # PM-BDSP-GrandUndergroundMining
 
-A reinforcement learning framework and **playable web game** for the mining minigame from Pokémon Brilliant Diamond & Shining Pearl's Grand Underground. Play in your browser against a trained AI agent, or use the customizable [Gymnasium](https://gymnasium.farama.org/)-compatible environment with multiple deep RL implementations for research and experimentation.
+A reinforcement learning environment and **playable web game** for the mining minigame from Pokémon Brilliant Diamond & Shining Pearl's Grand Underground. Play in your browser against a trained AI agent, or use the customizable [Gymnasium](https://gymnasium.farama.org/)-compatible environment with multiple deep RL implementations for research and experimentation.
 
 ## 🎮 Live Demo
 
